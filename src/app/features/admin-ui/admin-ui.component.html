@@ -1,1 +1,55 @@
-<p>admin-ui works!</p>
+<div class="card">
+  <p-table
+    [value]="users"
+    [paginator]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    responsiveLayout="stack"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td><span class="p-column-title">Name</span>{{ user.name }}</td>
+        <td><span class="p-column-title">Email</span>{{ user.email }}</td>
+        <td><span class="p-column-title">Role</span>{{ user.role }}</td>
+        <td>
+          <span class="p-column-title">Actions</span>
+          <div class="action-btns">
+            <p-button
+              type="button"
+              icon="pi pi-pencil"
+              styleClass="p-button-text"
+            ></p-button>
+            <p-button
+              type="button"
+              icon="pi pi-trash"
+              styleClass="p-button-text"
+            ></p-button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="paginatorleft">
+      <p-button
+        type="button"
+        icon="pi pi-plus"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+      <p-button
+        type="button"
+        icon="pi pi-cloud"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template> -->
+  </p-table>
+</div>
