@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { AdminUiComponent } from './features/admin-ui/admin-ui.component';
+import { RouteConstants } from './config/route-constants';
 
 const routes: Routes = [
   {
@@ -11,16 +12,16 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'admin-ui',
+        redirectTo: RouteConstants.ROUTES.HOME,
         pathMatch: 'full',
       },
       {
-        path: 'admin-ui',
+        path: RouteConstants.ROUTES.HOME,
         component: AdminUiComponent,
       },
       {
         path: '**',
-        redirectTo: 'admin-ui',
+        redirectTo: RouteConstants.ROUTES.HOME,
       },
     ],
   },
