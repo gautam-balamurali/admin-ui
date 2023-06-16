@@ -1,27 +1,52 @@
 <div class="card">
   <p-table
-    [value]="users"
+    #table
+    [value]="usersList"
     [paginator]="true"
     [rows]="10"
     [showCurrentPageReport]="true"
     responsiveLayout="stack"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    (onPage)="onPageChange($event)"
   >
     <ng-template pTemplate="header">
       <tr>
+        <th>
+          <input
+            type="checkbox"
+            (change)="toggleAllSelection($event)"
+            [checked]="isAllChecked()"
+          />
+        </th>
         <th>Name</th>
         <th>Email</th>
         <th>Role</th>
         <th>Actions</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-user>
-      <tr>
-        <td><span class="p-column-title">Name</span>{{ user.name }}</td>
-        <td><span class="p-column-title">Email</span>{{ user.email }}</td>
-        <td><span class="p-column-title">Role</span>{{ user.role }}</td>
+
+    <ng-template pTemplate="body" let-user let-rowIndex="rowIndex">
+      <tr [class.selected]="user.selected">
         <td>
-          <span class="p-column-title">Actions</span>
+          <input
+            type="checkbox"
+            (change)="toggleSelection($event, user.id)"
+            [checked]="user.selected"
+          />
+        </td>
+        <td>
+          <span class="p-column-title fw-600">Name</span>
+          {{ user.name }}
+        </td>
+        <td>
+          <span class="p-column-title fw-600">Email</span>
+          {{ user.email }}
+        </td>
+        <td>
+          <span class="p-column-title fw-600">Role</span>
+          {{ user.role }}
+        </td>
+        <td>
+          <span class="p-column-title fw-600">Actions</span>
           <div class="action-btns">
             <p-button
               type="button"
@@ -37,6 +62,7 @@
         </td>
       </tr>
     </ng-template>
+
     <!-- <ng-template pTemplate="paginatorleft">
       <p-button
         type="button"
