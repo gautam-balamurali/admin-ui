@@ -11,9 +11,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { AdminUiComponent } from './admin-ui/admin-ui.component';
 import { EditUserDialogComponent } from './admin-ui/edit-user-dialog/edit-user-dialog.component';
 import { DeleteUserDialogComponent } from './admin-ui/delete-user-dialog/delete-user-dialog.component';
+import { SharedModule } from '../shared/shared.module';
+import { UsersListComponent } from './admin-ui/users-list/users-list.component';
 
 @NgModule({
-  declarations: [AdminUiComponent, EditUserDialogComponent, DeleteUserDialogComponent],
+  declarations: [
+    AdminUiComponent,
+    EditUserDialogComponent,
+    DeleteUserDialogComponent,
+    UsersListComponent,
+  ],
   imports: [
     CommonModule,
     TableModule,
@@ -24,6 +31,7 @@ import { DeleteUserDialogComponent } from './admin-ui/delete-user-dialog/delete-
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
 })
 export class FeaturesModule {}
