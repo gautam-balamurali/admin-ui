@@ -1,0 +1,14 @@
+<div class="search-bar">
+  <input
+    type="text"
+    (input)="searchInputChangeHandler($event)"
+    [placeholder]="placeholder"
+    [value]="searchQuery"
+  />
+  <p-button
+    type="button"
+    icon="pi pi-refresh"
+    styleClass="p-button-text"
+    (onClick)="refreshList()"
+  ></p-button>
+</div>
