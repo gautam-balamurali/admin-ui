@@ -39,9 +39,12 @@ export class AdminUiComponent implements OnInit, OnDestroy {
         next: (response: UserDetailsModel[]) => {
           this.usersList = response;
           this.filteredUsersList = [...this.usersList];
-          this.usersListReference.calculateRowsToBeDisplayed(
-            this.usersList.length
-          );
+          if (this.usersListReference) {
+            // Check if usersListReference is defined
+            this.usersListReference.calculateRowsToBeDisplayed(
+              this.usersList.length
+            );
+          }
         },
         error: (error) => {
           console.error({ error });
@@ -49,7 +52,9 @@ export class AdminUiComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy(): void {
-    this.usersServiceSubscription.unsubscribe();
+  ngOnDestroy() {
+    if (this.usersServiceSubscription) {
+      this.usersServiceSubscription.unsubscribe();
+    }
   }
 }

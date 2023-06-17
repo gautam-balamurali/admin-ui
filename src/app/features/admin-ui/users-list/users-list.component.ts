@@ -112,7 +112,7 @@ export class UsersListComponent implements OnInit {
    */
   patchUserDetails(userDetails: UserDetailsModel) {
     const { name, email, role } = userDetails;
-    this.userForm.patchValue({
+    this.userForm?.patchValue({
       name,
       email,
       role,

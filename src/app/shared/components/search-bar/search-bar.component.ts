@@ -15,7 +15,7 @@ export class SearchBarComponent {
   searchQuery: string = '';
 
   searchInputChangeHandler(event: any) {
-    this.searchQuery = event.target.value;
+    this.searchQuery = event?.target?.value;
     this.searchQueryChange.emit(event);
   }
 
