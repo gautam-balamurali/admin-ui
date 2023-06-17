@@ -1,1 +1,46 @@
-<p>footer works!</p>
+<footer class="footer container-fluid">
+  <div class="container-footer">
+    <div class="heading">Connect With Me</div>
+    <ul class="unordered list-inline">
+      <li>
+        <a
+          class="link"
+          target="_blank"
+          href="https://github.com/gautam-balamurali"
+        >
+          <p-button
+            type="button"
+            icon="pi pi-github"
+            [style]="{ color: 'white', background: '#1976d2', border: 'none' }"
+          ></p-button>
+        </a>
+      </li>
+      <li>
+        <a
+          class="link"
+          target="_blank"
+          href="https://www.linkedin.com/in/gautam-balamurali"
+        >
+          <p-button
+            type="button"
+            icon="pi pi-linkedin"
+            [style]="{ color: 'white', background: '#1976d2', border: 'none' }"
+          ></p-button>
+        </a>
+      </li>
+      <li>
+        <a class="link" target="_blank" href="https://twitter.com/codewithash">
+          <p-button
+            type="button"
+            icon="pi pi-twitter"
+            [style]="{ color: 'white', background: '#1976d2', border: 'none' }"
+          ></p-button>
+        </a>
+      </li>
+    </ul>
+    <p>Developed with ❤️ by Gautam Balamurali</p>
+    <div id="copyrt-txt">
+      <p>© {{ currentYear }} | All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
