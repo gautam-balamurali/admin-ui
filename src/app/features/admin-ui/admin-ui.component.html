@@ -1,7 +1,28 @@
+<div class="search-bar">
+  <input
+    type="text"
+    (input)="searchInputChangeHandler($event)"
+    placeholder="Search by name, email or role"
+  />
+  <p-button
+    type="button"
+    icon="pi pi-refresh"
+    styleClass="p-button-text"
+    (onClick)="getUsersList()"
+  ></p-button>
+</div>
+
+<div class="no-of-results">
+  <p>
+    Showing {{ table.first + 1 }} to {{ table.first + rowsDisplayed }} of
+    {{ filteredUsersList?.length }} entries
+  </p>
+</div>
+
 <div class="card">
   <p-table
     #table
-    [value]="usersList"
+    [value]="filteredUsersList"
     [paginator]="true"
     [rows]="10"
     [showCurrentPageReport]="true"
@@ -12,6 +33,7 @@
       <tr>
         <th>
           <input
+            *ngIf="filteredUsersList.length > 0"
             type="checkbox"
             (change)="toggleAllSelection($event)"
             [checked]="isAllChecked()"
@@ -75,12 +97,21 @@
         Delete Selected
       </button>
     </ng-template>
-    <!-- <ng-template pTemplate="paginatorright">
-      <p-button
-        type="button"
-        icon="pi pi-cloud"
-        styleClass="p-button-text"
-      ></p-button>
-    </ng-template> -->
+    <ng-template pTemplate="paginatorright">
+      <button
+        *ngIf="selectedUsers.length > 0"
+        mat-raised-button
+        color="primary"
+        (click)="deselectAll()"
+      >
+        Deselect All
+      </button>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage" let-columns>
+      <tr>
+        <td [attr.colspan]="columns?.length + 1">No results found.</td>
+      </tr>
+    </ng-template>
   </p-table>
 </div>

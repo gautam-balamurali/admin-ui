@@ -17,11 +17,13 @@ export class AdminUiComponent implements OnInit {
 
   usersList: any[] = [];
   selectedUsers: any[] = [];
+  filteredUsersList: any[] = [];
 
   rowsDisplayed: number = 0;
+  first: number = 0;
+  rows: number = 10;
 
-  first = 0;
-  rows = 10;
+  searchQuery: string = '';
 
   @ViewChild('table', { static: false }) table: Table;
 
@@ -48,8 +50,9 @@ export class AdminUiComponent implements OnInit {
       next: (response: any) => {
         console.log({ response });
         this.usersList = response;
+        this.filteredUsersList = [...this.usersList];
         const firstRow = 0;
-        const lastRow = Math.min(this.table.rows, this.usersList.length);
+        const lastRow = Math.min(this.table?.rows, this.usersList.length);
         this.rowsDisplayed = lastRow - firstRow;
       },
       error: (error) => {
@@ -94,6 +97,7 @@ export class AdminUiComponent implements OnInit {
    */
   updateSelectedUsers() {
     this.selectedUsers = this.usersList.filter((user) => user.selected);
+    this.applySearchFilter(this.searchQuery);
   }
 
   /**
@@ -103,7 +107,7 @@ export class AdminUiComponent implements OnInit {
   onPageChange(event) {
     const firstRow = event.first;
     const lastRow = event.first + event.rows;
-    const totalRecords = this.usersList.length;
+    const totalRecords = this.filteredUsersList.length;
     this.rowsDisplayed = Math.min(lastRow, totalRecords) - firstRow;
   }
 
@@ -115,11 +119,15 @@ export class AdminUiComponent implements OnInit {
     const first = this.table?.first ?? 0;
     const last = first + this.rowsDisplayed;
     const displayedUsers = this.table?.value.slice(first, last) ?? [];
-    return displayedUsers.every((element) =>
-      this.selectedUsers.includes(element)
+    return (
+      this.selectedUsers.length > 0 &&
+      displayedUsers.every((element) => this.selectedUsers.includes(element))
     );
   }
-
+  /**
+   * Patchs user details
+   * @param userDetails
+   */
   patchUserDetails(userDetails) {
     const { name, email, role } = userDetails;
     this.userForm.patchValue({
@@ -149,6 +157,7 @@ export class AdminUiComponent implements OnInit {
           user.id === userDetails.id ? { ...user, ...updatedUserDetails } : user
         );
         this.usersList = [...updatedUsersList];
+        this.applySearchFilter(this.searchQuery);
       }
     });
   }
@@ -172,6 +181,7 @@ export class AdminUiComponent implements OnInit {
           (user) => user.id !== userDetails.id
         );
         this.usersList = [...updatedUsersList];
+        this.applySearchFilter(this.searchQuery);
       }
     });
   }
@@ -196,7 +206,48 @@ export class AdminUiComponent implements OnInit {
         );
         this.usersList = [...updatedUsersList];
         this.updateSelectedUsers();
+        this.applySearchFilter(this.searchQuery);
       }
     });
+  }
+
+  /**
+   * Search input change handler
+   * @param event
+   */
+  searchInputChangeHandler(event) {
+    this.searchQuery = event.target.value.toLowerCase().trim();
+    this.applySearchFilter(this.searchQuery, true);
+  }
+
+  /**
+   * Applies search filter
+   * @param query
+   */
+  applySearchFilter(query, goToFirstPage?: boolean) {
+    if (query === '') {
+      this.filteredUsersList = [...this.usersList];
+    } else {
+      this.filteredUsersList = this.usersList.filter(
+        (user) =>
+          user.name.toLowerCase().includes(query) ||
+          user.email.toLowerCase().includes(query) ||
+          user.role.toLowerCase().includes(query)
+      );
+    }
+    if (goToFirstPage) {
+      this.table.first = 0;
+      this.onPageChange({ first: 0, rows: this.rows });
+    }
+  }
+/**
+ * Deselects all selected users
+ */
+deselectAll() {
+    const updatedUsersList = this.usersList.map((user) =>
+      user.selected ? { ...user, selected: false } : user
+    );
+    this.usersList = [...updatedUsersList];
+    this.updateSelectedUsers();
   }
 }
