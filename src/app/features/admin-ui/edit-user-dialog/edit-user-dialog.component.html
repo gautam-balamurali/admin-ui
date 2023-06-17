@@ -1,46 +1,51 @@
-<h2 mat-dialog-title>{{ dialogTitle }}</h2>
-<div mat-dialog-content>
-  <form [formGroup]="dialogContent">
-    <mat-form-field>
-      <input matInput formControlName="name" placeholder="Name" />
-      <mat-error
-        *ngIf="
-          dialogContent.get('name').invalid && dialogContent.get('name').touched
-        "
-      >
-        Name is required.
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput formControlName="email" placeholder="Email" />
-      <mat-error
-        *ngIf="
-          dialogContent.get('email').invalid &&
-          dialogContent.get('email').touched
-        "
-      >
-        Email is required.
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput formControlName="role" placeholder="Role" />
-      <mat-error
-        *ngIf="
-          dialogContent.get('role').invalid && dialogContent.get('role').touched
-        "
-      >
-        Role is required.
-      </mat-error>
-    </mat-form-field>
-  </form>
-</div>
-<div mat-dialog-actions>
-  <button
-    mat-raised-button
-    color="primary"
-    [disabled]="dialogContent.invalid"
-    (click)="onClose()"
-  >
-    Save
-  </button>
+<div class="dialog-container">
+  <h2 mat-dialog-title>{{ dialogTitle }}</h2>
+  <div mat-dialog-content>
+    <form [formGroup]="dialogContent">
+      <mat-form-field>
+        <input matInput formControlName="name" placeholder="Name" />
+        <mat-error
+          *ngIf="
+            dialogContent.get('name').invalid &&
+            dialogContent.get('name').touched
+          "
+        >
+          Name is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="email" placeholder="Email" />
+        <mat-error
+          *ngIf="
+            dialogContent.get('email').invalid &&
+            dialogContent.get('email').touched
+          "
+        >
+          Email is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="role" placeholder="Role" />
+        <mat-error
+          *ngIf="
+            dialogContent.get('role').invalid &&
+            dialogContent.get('role').touched
+          "
+        >
+          Role is required.
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="onClose()">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="dialogContent.invalid"
+      (click)="onSave()"
+    >
+      Save
+    </button>
+  </div>
 </div>
