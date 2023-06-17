@@ -29,7 +29,7 @@
         <td>
           <input
             type="checkbox"
-            (change)="toggleSelection($event, user.id)"
+            (change)="toggleSelection($event, rowIndex)"
             [checked]="user.selected"
           />
         </td>
@@ -52,25 +52,30 @@
               type="button"
               icon="pi pi-pencil"
               styleClass="p-button-text"
+              (onClick)="openEditUserDialog(user)"
             ></p-button>
             <p-button
               type="button"
               icon="pi pi-trash"
               styleClass="p-button-text"
+              (onClick)="openDeleteUserDialog(user)"
             ></p-button>
           </div>
         </td>
       </tr>
     </ng-template>
 
-    <!-- <ng-template pTemplate="paginatorleft">
-      <p-button
-        type="button"
-        icon="pi pi-plus"
-        styleClass="p-button-text"
-      ></p-button>
+    <ng-template pTemplate="paginatorleft">
+      <button
+        *ngIf="selectedUsers.length > 0"
+        mat-raised-button
+        color="warn"
+        (click)="openDeleteSelectedUsersDialog()"
+      >
+        Delete Selected
+      </button>
     </ng-template>
-    <ng-template pTemplate="paginatorright">
+    <!-- <ng-template pTemplate="paginatorright">
       <p-button
         type="button"
         icon="pi pi-cloud"
