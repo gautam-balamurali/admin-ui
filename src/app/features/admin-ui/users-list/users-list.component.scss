@@ -1,3 +1,9 @@
+.users-list-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
 tr.selected {
   background-color: #f0f0f0;
 }
