@@ -8,6 +8,9 @@
 - Admin is able to select one or more rows. A selected row is highlighted with a grayish background color. Multiple selected rows can be deleted at once using the 'Delete Selected' button at the bottom left.
 - Checkbox on the top left is a shortcut to select or deselect all displayed rows. This will be applied only to the ten rows displayed in the current page, and not all 50 rows.
 
+* Adoptive design - design will change according to the number of cards within the page at the time.
+* This app is responsive for all the screen sizes.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
 
 ## Tech Stack
