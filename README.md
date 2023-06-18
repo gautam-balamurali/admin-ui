@@ -13,6 +13,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
 
+## Demo
+
+https://www.loom.com/share/7a860bcf70b647de87d009600fb229de?sid=f2e39ce6-5ac0-434c-b392-30352cb43714
+
+## Preview
+
+[View live](https://admin-ui-gautam-balamurali.netlify.app/home)
+
 ## Tech Stack
 
 - Angular 13
