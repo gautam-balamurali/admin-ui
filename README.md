@@ -1,6 +1,29 @@
-# AdminUi
+# 👨🏼‍💻Admin UI👩🏼‍💻
+
+- An interface for admins to see and delete users.
+- Column titles stand out from the entries.
+- A search bar that can filter on any property.
+- Admin is able to edit or delete rows in place.(There is no expectation of persistence. Edit and delete are expected to only happen in memory.)
+- Implemented pagination: Each page contains 10 rows. Buttons at the bottom allow you to jump to any page including special buttons for first page, previous page, next page and last page. Pagination is updated based on search/filtering. If there are 25 records for example that match a search query, then pagination buttons will only go till 3.
+- Admin is able to select one or more rows. A selected row is highlighted with a grayish background color. Multiple selected rows can be deleted at once using the 'Delete Selected' button at the bottom left.
+- Checkbox on the top left is a shortcut to select or deselect all displayed rows. This will be applied only to the ten rows displayed in the current page, and not all 50 rows.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
+
+## Tech Stack
+
+- Angular 13
+- SCSS
+- Prime NG
+- Angular Material
+- Jasmine and Karma for unit tests
+- Netlify for deployment
+
+## Future work
+
+- Add column sort functionalities
+- Fix edge cases if any
+- Make app CSS responsive and add aesthetics
 
 ## Development server
 
