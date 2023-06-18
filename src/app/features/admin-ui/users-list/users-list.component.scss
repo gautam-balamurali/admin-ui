@@ -1,0 +1,26 @@
+.users-list-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+tr.selected {
+  background-color: #f0f0f0;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.action-btns {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.no-of-results {
+  padding: 1rem;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}

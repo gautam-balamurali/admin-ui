@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
 
-
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [SearchBarComponent],
+  imports: [CommonModule, ButtonModule],
+  exports: [SearchBarComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

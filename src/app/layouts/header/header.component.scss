@@ -1,0 +1,23 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+  height: 3.5rem;
+  position: sticky;
+  z-index: 2000;
+
+  span {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+}
+
+.header img {
+  margin: 0 16px;
+}

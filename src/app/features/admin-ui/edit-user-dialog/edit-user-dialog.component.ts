@@ -20,6 +20,10 @@ export class EditUserDialogComponent {
   }
 
   onClose(): void {
+    this.dialogRef.close();
+  }
+
+  onSave(): void {
     this.dialogRef.close(this.dialogContent.getRawValue());
   }
 }

@@ -1,0 +1,51 @@
+.container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.container-footer {
+  margin: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 600px;
+}
+
+.unordered {
+  list-style: none;
+}
+
+.list-inline li {
+  display: inline;
+  padding: 0rem 0.5rem;
+}
+
+.footer {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 2rem 0rem;
+  text-align: center;
+  p {
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+}
+
+.footer .heading {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.footer ul {
+  padding-inline-start: 0px;
+}
+
+.footer .link {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 330px) {
+  .footer {
+    width: 140%;
+  }
+}
