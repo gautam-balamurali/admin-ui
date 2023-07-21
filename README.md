@@ -19,7 +19,7 @@ https://www.loom.com/share/7a860bcf70b647de87d009600fb229de?sid=f2e39ce6-5ac0-43
 
 ## Preview
 
-[View live](https://admin-ui-gautam-balamurali.netlify.app/home)
+[View Live](https://admin-ui-gautam-balamurali.netlify.app/home)
 
 ## Tech Stack
 
