@@ -1,4 +1,4 @@
-<h1 align='center'>👨🏼‍💻Admin UI👩🏼‍💻</h1>
+<h1 align='center'>👨🏼‍💻Admin-UI👩🏼‍💻</h1>
 
 - An interface for admins to see and delete users.
 - Column titles stand out from the entries.
